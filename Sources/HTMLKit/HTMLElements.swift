@@ -1,3 +1,15 @@
+public struct Element: HTMLElement {
+    public let tag: String
+    public var attributes: [String: String]
+    public var children: [HTML]
+
+    public init(tag: String, @HTMLBuilder makeChildren: () -> [HTML] = { [] }) {
+        self.tag = tag
+        self.attributes = [:]
+        self.children = makeChildren()
+    }
+}
+
 public struct H1: HTMLElement {
     public var tag: String {
         "h1"

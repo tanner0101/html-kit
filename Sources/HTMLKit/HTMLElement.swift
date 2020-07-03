@@ -5,7 +5,7 @@ public protocol HTMLElement: HTML {
 }
 
 extension HTMLElement {
-    public func attribute(_ key: String, _ value: String) -> Self {
+    public func attribute(_ key: String, _ value: String = "") -> Self {
         var copy = self
         copy.attributes[key] = value
         return copy
@@ -33,8 +33,10 @@ extension HTMLElement {
         for (key, value) in self.attributes.sorted(by: { $0.0 < $1.0 }) {
             stream.write(" ")
             stream.write(key)
-            stream.write("=")
-            stream.write(doubleQuoted: value)
+            if !value.isEmpty {
+                stream.write("=")
+                stream.write(doubleQuoted: value)
+            }
         }
         if self.children.isEmpty {
             stream.write("/>")

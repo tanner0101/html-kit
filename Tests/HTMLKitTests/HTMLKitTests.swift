@@ -18,6 +18,9 @@ final class HTMLKitTests: XCTestCase {
                     <h1 class="large red" id="header">Hello, world!</h1>
                     <p>Welcome to my website</p>
                     <p>You are currently logged in as: Vapor</p>
+                    <form>
+                        <input name="email" required/>
+                    </form>
                 </div>
             </body>
         </html>
@@ -52,6 +55,12 @@ struct HomePage: HTMLView {
                 .class("large").class("red")
             P("Welcome to my website")
             P("You are currently logged in as: \(self.name)")
+            // Example of arbitrary HTML creation
+            Element(tag: "form") {
+                Element(tag: "input")
+                    .attribute("required")
+                    .attribute("name", "email")
+            }
         }
     }
 }
