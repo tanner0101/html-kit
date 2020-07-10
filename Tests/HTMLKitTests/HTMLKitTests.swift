@@ -22,6 +22,13 @@ final class HTMLKitTests: XCTestCase {
                         <input name="email" required/>
                     </form>
                 </div>
+                <script>
+                    func add(x, y) {
+                        return x + x
+                    }
+                    var x = add(1, 1)
+                    console.log("hello")
+                </script>
             </body>
         </html>
         """)
@@ -40,6 +47,13 @@ struct Website: HTMLView {
             Body {
                 Img(src: "logo.png").alt("Our logo")
                 self.page
+                Script("""
+                func add(x, y) {
+                    return x + x
+                }
+                var x = add(1, 1)
+                console.log("hello")
+                """)
             }
         }
     }

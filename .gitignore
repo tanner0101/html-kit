@@ -4,4 +4,5 @@
 /*.xcodeproj
 xcuserdata/
 .swiftpm
+Tests/LinuxMain.swift
 

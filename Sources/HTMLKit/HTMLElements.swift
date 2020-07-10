@@ -125,3 +125,28 @@ public struct Title: HTMLElement {
         self.children = [text]
     }
 }
+
+
+public struct UnescapedString: HTML {
+    public let string: String
+    public init(_ string: String) {
+        self.string = string
+    }
+    public func render(options: HTMLRenderOptions, into stream: HTMLOutputStream) {
+        stream.write(self.string)
+    }
+}
+
+public struct Script: HTMLElement {
+    public var tag: String {
+        "script"
+    }
+
+    public var attributes: [String: String]
+    public var children: [HTML]
+
+    public init(_ script: String) {
+        self.attributes = [:]
+        self.children = [UnescapedString(script)]
+    }
+}
